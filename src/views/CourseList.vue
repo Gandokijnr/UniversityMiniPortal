@@ -1,21 +1,20 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-    <!-- Header -->
-    <header class="bg-white shadow-sm border-b border-gray-100">
+  <div class="min-h-screen">
+    <!-- Page Header -->
+    <div class="bg-white shadow-sm border-b border-gray-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="text-center">
           <h1 class="text-4xl font-bold text-gray-900 mb-2">Course Catalog</h1>
           <p class="text-lg text-gray-600">Discover amazing courses from top universities</p>
         </div>
       </div>
-    </header>
+    </div>
 
     <!-- Search and Filter Section -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
         <div class="flex flex-col md:flex-row gap-4">
           <div class="flex-1">
-            <label for="search" class="sr-only">Search courses</label>
             <div class="relative">
               <MagnifyingGlassIcon class="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <input
@@ -23,14 +22,14 @@
                 v-model="searchQuery"
                 type="text"
                 placeholder="Search courses..."
-                class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
               >
             </div>
           </div>
           <div class="md:w-48">
             <select
               v-model="selectedCategory"
-              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
             >
               <option value="">All Categories</option>
               <option v-for="category in categories" :key="category" :value="category">
@@ -76,16 +75,16 @@
           <div class="p-6">
             <!-- Category Badge -->
             <div class="flex items-center justify-between mb-3">
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
                 {{ course.category || 'General' }}
               </span>
-              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
                 {{ course.level }}
               </span>
             </div>
 
             <!-- Course Title -->
-            <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-200">
+            <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors duration-200">
               {{ course.title }}
             </h3>
 
@@ -113,7 +112,7 @@
                 <span class="text-2xl font-bold text-gray-900">${{ course.fees.toLocaleString() }}</span>
                 <span class="text-sm text-gray-500">Course Fee</span>
               </div>
-              <div class="flex items-center text-blue-600 font-medium text-sm group-hover:text-blue-700 transition-colors duration-200">
+              <div class="flex items-center text-orange-600 font-medium text-sm group-hover:text-orange-700 transition-colors duration-200">
                 <span class="mr-1">View Details</span>
                 <ArrowRightIcon class="h-4 w-4 group-hover:translate-x-1 transition-transform duration-200" />
               </div>
@@ -133,10 +132,10 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { supabase, type Course } from '../lib/supabase'
+import { supabase } from '../lib/supabase'
 import {
   MagnifyingGlassIcon,
   AcademicCapIcon,
@@ -147,7 +146,7 @@ import {
 } from '@heroicons/vue/24/outline'
 
 const router = useRouter()
-const courses = ref<Course[]>([])
+const courses = ref([])
 const loading = ref(true)
 const error = ref('')
 const searchQuery = ref('')
@@ -200,7 +199,7 @@ const fetchCourses = async () => {
   }
 }
 
-const goToCourse = (courseId: string) => {
+const goToCourse = (courseId) => {
   router.push({ name: 'course-detail', params: { id: courseId } })
 }
 

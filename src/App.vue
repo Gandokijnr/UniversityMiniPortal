@@ -1,11 +1,14 @@
 <template>
   <div id="app">
-    <router-view />
+    <AppHeader />
+    <main>
+      <router-view />
+    </main>
   </div>
 </template>
 
-<script setup lang="ts">
-// Main app component
+<script setup>
+import AppHeader from './components/AppHeader.vue'
 </script>
 
 <style>

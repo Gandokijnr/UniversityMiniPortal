@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+  <div class="min-h-screen">
     <!-- Navigation -->
     <nav class="bg-white shadow-sm border-b border-gray-100">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center py-4">
           <button
             @click="goBack"
-            class="flex items-center text-gray-600 hover:text-blue-600 transition-colors duration-200"
+            class="flex items-center text-gray-600 hover:text-orange-600 transition-colors duration-200"
           >
             <ArrowLeftIcon class="h-5 w-5 mr-2" />
             <span class="font-medium">Back to Courses</span>
@@ -46,10 +46,10 @@
             </div>
             <div class="p-8">
               <div class="flex items-center gap-3 mb-4">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
                   {{ course.category || 'General' }}
                 </span>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-emerald-100 text-emerald-800">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-orange-100 text-orange-800">
                   {{ course.level }}
                 </span>
               </div>
@@ -74,7 +74,7 @@
             <h2 class="text-2xl font-semibold text-gray-900 mb-4">Instructor</h2>
             <div class="flex items-center">
               <div class="flex-shrink-0">
-                <div class="h-16 w-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full flex items-center justify-center">
+                <div class="h-16 w-16 bg-orange-600 rounded-full flex items-center justify-center">
                   <span class="text-white font-bold text-xl">
                     {{ course.instructor.split(' ').map(n => n[0]).join('') }}
                   </span>
@@ -130,7 +130,7 @@
 
             <!-- Enroll Button -->
             <div class="mt-8">
-              <button class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-4 px-6 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
+              <button class="w-full bg-orange-600 text-white font-semibold py-4 px-6 rounded-lg hover:bg-orange-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl">
                 Enroll Now
               </button>
               <p class="text-xs text-gray-500 text-center mt-3">
@@ -140,12 +140,12 @@
           </div>
 
           <!-- Additional Info -->
-          <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+          <div class="bg-orange-50 rounded-xl p-6 border border-orange-100">
             <h4 class="font-semibold text-gray-900 mb-3">Need Help?</h4>
             <p class="text-sm text-gray-700 mb-4">
               Have questions about this course? Our admissions team is here to help.
             </p>
-            <button class="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors duration-200">
+            <button class="text-orange-600 hover:text-orange-700 font-medium text-sm transition-colors duration-200">
               Contact Admissions →
             </button>
           </div>
@@ -155,10 +155,10 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { supabase, type Course } from '../lib/supabase'
+import { supabase } from '../lib/supabase'
 import {
   ArrowLeftIcon,
   AcademicCapIcon,
@@ -172,7 +172,7 @@ import {
 const router = useRouter()
 const route = useRoute()
 
-const course = ref<Course | null>(null)
+const course = ref(null)
 const loading = ref(true)
 const error = ref('')
 
