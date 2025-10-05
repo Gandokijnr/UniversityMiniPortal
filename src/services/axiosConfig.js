@@ -22,13 +22,10 @@ apiClient.interceptors.request.use(
       console.log(`🌐 API Request: ${config.method?.toUpperCase()} ${config.url}`)
     }
     
-    // Add API keys from environment variables if available
-    if (config.url?.includes('coursera.org') && import.meta.env.VITE_COURSERA_API_KEY) {
-      config.headers.Authorization = `Bearer ${import.meta.env.VITE_COURSERA_API_KEY}`
-    }
-    
-    if (config.url?.includes('jsonbin.io') && import.meta.env.VITE_JSONBIN_API_KEY) {
-      config.headers['X-Master-Key'] = import.meta.env.VITE_JSONBIN_API_KEY
+    // Add Supabase authentication if needed
+    if (config.url?.includes('supabase.co') && import.meta.env.VITE_SUPABASE_ANON_KEY) {
+      config.headers.Authorization = `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+      config.headers.apikey = import.meta.env.VITE_SUPABASE_ANON_KEY
     }
     
     return config
