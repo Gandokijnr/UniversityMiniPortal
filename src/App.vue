@@ -1,14 +1,25 @@
 <template>
   <div id="app">
-    <AppHeader />
-    <main>
-      <router-view />
-    </main>
+    <ErrorBoundary @retry="handleRetry">
+      <AppHeader />
+      <main>
+        <router-view :key="routerKey" />
+      </main>
+    </ErrorBoundary>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import AppHeader from './components/AppHeader.vue'
+import ErrorBoundary from './components/ErrorBoundary.vue'
+
+const routerKey = ref(0)
+
+const handleRetry = () => {
+  // Force re-render of router-view to retry failed operations
+  routerKey.value += 1
+}
 </script>
 
 <style>

@@ -5,7 +5,7 @@
         <div class="flex items-center">
           <router-link to="/" class="flex items-center">
             <AcademicCapIcon class="h-8 w-8 text-orange-600 mr-3" />
-            <span class="text-xl font-bold text-gray-900">CourseHub</span>
+            <span class="text-xl font-bold text-gray-900">MiniPortal</span>
           </router-link>
         </div>
         

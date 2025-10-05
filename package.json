@@ -1,16 +1,33 @@
 {
-  "name": "vite-vue-javascript-starter",
+  "name": "university-mini-portal-stage2",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
+  "description": "Enhanced MSc Course Discovery Platform - Stage 2",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "scrape": "node scrapers/run-scraper.js",
+    "scrape:all-real": "node run-all-scrapers.js",
+    "scrape:enhanced": "node run-enhanced-scraper.js",
+    "create:samples": "node create-sample-courses.js",
+    "test:db": "node test-database.js",
+    "check:images": "node scripts/check-course-images.js",
+    "scrape:full": "npm run scrape:enhanced && npm run check:images",
+    "scrape:all-unis": "npm run scrape:enhanced && npm run check:images",
+    "scrape:complete": "npm run scrape:enhanced && npm run check:images && npm run test:db",
+    "setup:complete": "npm run scrape:all-real",
+    "lint": "echo 'Linting not configured yet'",
+    "test": "echo 'Tests not configured yet'"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",
     "@supabase/supabase-js": "^2.58.0",
+    "axios": "^1.12.2",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^17.2.3",
+    "puppeteer": "^24.15.0",
     "vue": "^3.4.38",
     "vue-router": "^4.5.1"
   },

@@ -29,3 +29,29 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Documentation files (exclude all except main README and developer presentation)
+*.md
+!README.md
+!DEVELOPER_PRESENTATION.md
+
+# Specific documentation files to ignore
+IMAGE_EXTRACTION.md
+PROJECT_SUMMARY.md
+SCRIPT_COMMANDS.md
+SCRAPED_DATA_USAGE.md
+STAGE2_DOCUMENTATION.md
+AXIOS_INTEGRATION.md
+API_INTEGRATION.md
+SCRAPING_STATUS.md
+SCRAPING_COMMANDS.md
+SCRAPER_USAGE.md
+SCRAPER_SETUP.md
+SCRAPED_DATA_ONLY.md
+MULTI_UNIVERSITY_IMPLEMENTATION.md
+IMPLEMENTATION_SUMMARY.md
+DEPLOYMENT.md
+PROJECT_SUMMARY.md
+
+# Scraper documentation
+scrapers/README.md
